@@ -1,0 +1,22 @@
+body{
+    background-color: darkred;
+}
+.container{
+    background-color: lightgray;
+    width: 80vw;
+    margin: 0 auto;
+    text-align: center;
+    min-width: 500px;
+    height: 90vh;
+}
+.title{
+    font-size: 36px;
+}
+#start{
+    background-color: lightcoral;
+    border: 2px solid darkred;
+    width: 50px;
+    margin: 0 auto;
+    margin-top: 25%;
+}
+ 
