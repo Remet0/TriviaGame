@@ -54,7 +54,7 @@ let count = 0;
 //holds time interval for next question
 //holds time interval for timer
 let tempTimer;
-let timer = 30;
+let timer = 15;
 let betweenTimer = 5;
 //holds time interval for tempBetween
 let tempBetween;
@@ -98,7 +98,7 @@ function nextQuestion(){
 //function that runs on correct answer, adds to wins and provided correct html
 function win(source){
     clearInterval(tempTimer);
-    timer = 30;
+    timer = 15;
     wins++;
     $('#timer').html('');
     $('#questions').html('Correct!' + questionArray[count].triviaFact);
@@ -108,7 +108,7 @@ function win(source){
     $('#answerFour').html('');
     count++;
     if(count === questionArray.length){
-        endGame();
+        setTimeout(endGame, 5000);
         return;
     }
 
@@ -120,7 +120,7 @@ function win(source){
 function lose(source){
     clearInterval(tempTimer);
     if(timer === 0){
-        timer = 30;
+        timer = 15;
         losses++;
         $('#timer').html('');
         $('#questions').html('Out of Time!' + questionArray[count].triviaFact);
@@ -136,7 +136,7 @@ function lose(source){
         setTimeout(displayQuestion, 5000);
         setTimeout(nextQuestion, 5000);
     }
-    timer = 30;
+    timer = 15;
     losses++;
     $('#timer').html('');
     $('#questions').html('Wrong!' + questionArray[count].triviaFact);
