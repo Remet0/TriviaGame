@@ -23,7 +23,7 @@ let questionArray =  [{question: 'How many playable characters were in the first
                         answer4: 'Palutena',
                         correct: 'Palutena',
                         correctGif: './assets/images/Palutena.gif',
-                        triviaFact: '<br> Palutena, along with Duck Hunt, Dark Samus, Ridley, Prahna Plant and Wii Fit Trainer are not playable outside of Smash'},
+                        triviaFact: '<br> Palutena, along with Duck Hunt, Dark Samus, Ridley, Piranha Plant and Wii Fit Trainer are not playable outside of Smash'},
                         {question: 'Which character debuted in Smash Bros before their debut title?',
                         answer1: 'Mega-man',
                         answer2: 'Snake',
@@ -39,7 +39,7 @@ let questionArray =  [{question: 'How many playable characters were in the first
                         answer4: 'Alola',
                         correct: 'Kanto',
                         correctGif: './assets/images/Kanto.jpg',
-                        triviaFact: '<br> Pokemon Trainer is from Kanto, which is loosely based on real-life region in Japan'},
+                        triviaFact: '<br> Pokemon Trainer is from Kanto, which is loosely based on the real-life region in Japan'},
                         {question: 'Which franchise has the most stages in Super Smash Bros?',
                         answer1: 'Super Mario Bro\'s',
                         answer2: 'Donkey Kong',
@@ -54,7 +54,7 @@ let count = 0;
 //holds time interval for next question
 //holds time interval for timer
 let tempTimer;
-let timer = 15;
+let timer = 20;
 let betweenTimer = 5;
 //holds time interval for tempBetween
 let tempBetween;
@@ -70,12 +70,14 @@ let losses = 0;
   })   
   //this will display the question and answers you want
 function displayQuestion(){
-    $('#timer').html('Time Remaining ' + timer);
-    $('#questions').html(questionArray[count].question);
-    $('#answerOne').html(questionArray[count].answer1);
-    $('#answerTwo').html(questionArray[count].answer2);
-    $('#answerThree').html(questionArray[count].answer3);
-    $('#answerFour').html(questionArray[count].answer4);
+    $('#timer').html('Time Remaining ' + timer).show();
+    $('#questions').html(questionArray[count].question).show();
+    $('#answerOne').html(questionArray[count].answer1).show();
+    $('#answerTwo').html(questionArray[count].answer2).show();
+    $('#answerThree').html(questionArray[count].answer3).show();
+    $('#answerFour').html(questionArray[count].answer4).show();
+    $('#trivia').hide();
+    $('#triviaImage').hide();
 }
 
 
@@ -98,14 +100,16 @@ function nextQuestion(){
 //function that runs on correct answer, adds to wins and provided correct html
 function win(source){
     clearInterval(tempTimer);
-    timer = 15;
+    timer = 20;
     wins++;
-    $('#timer').html('');
-    $('#questions').html('Correct!' + questionArray[count].triviaFact);
-    $('#answerOne').html('<img src=' + source+  ' alt="">');
-    $('#answerTwo').html('');
-    $('#answerThree').html('');
-    $('#answerFour').html('');
+    $('#timer').hide();
+    $('#questions').hide();
+    $('#answerOne').hide();
+    $('#answerTwo').hide();
+    $('#answerThree').hide();
+    $('#answerFour').hide();
+    $('#trivia').html('Correct!' + questionArray[count].triviaFact).show();
+    $('#triviaImage').html('<img src=' + source+  ' alt="">').show();
     count++;
     if(count === questionArray.length){
         setTimeout(endGame, 5000);
@@ -120,33 +124,39 @@ function win(source){
 function lose(source){
     clearInterval(tempTimer);
     if(timer === 0){
-        timer = 15;
+        console.log('working');
+        timer = 20;
         losses++;
-        $('#timer').html('');
-        $('#questions').html('Out of Time!' + questionArray[count].triviaFact);
-        $('#answerOne').html('<img src=' + source+  ' alt="">');
-        $('#answerTwo').html('');
-        $('#answerThree').html('');
-        $('#answerFour').html('');
+        $('#timer').hide();
+        $('#questions').hide();
+        $('#answerOne').hide();
+        $('#answerTwo').hide();
+        $('#answerThree').hide();
+        $('#answerFour').hide();
+        $('#trivia').html('Times Up!' + questionArray[count].triviaFact).show();
+        $('#triviaImage').html('<img src=' + source+  ' alt="">').show();
         count++;
         if(count === questionArray.length){
-            endGame();
+            setTimeout(endGame, 5000);
             return;
         }
         setTimeout(displayQuestion, 5000);
         setTimeout(nextQuestion, 5000);
+        return;
     }
-    timer = 15;
+    timer = 20;
     losses++;
-    $('#timer').html('');
-    $('#questions').html('Wrong!' + questionArray[count].triviaFact);
-    $('#answerOne').html('<img src=' + source+  ' alt="">');
-    $('#answerTwo').html('');
-    $('#answerThree').html('');
-    $('#answerFour').html('');
+    $('#timer').hide();
+    $('#questions').hide();
+    $('#answerOne').hide();
+    $('#answerTwo').hide();
+    $('#answerThree').hide();
+    $('#answerFour').hide();
+    $('#trivia').html('Wrong!' + questionArray[count].triviaFact).show();
+    $('#triviaImage').html('<img src=' + source+  ' alt="">').show();
     count++;
     if(count === questionArray.length){
-        endGame();
+        setTimeout(endGame, 5000);
         return;
     }
 
@@ -158,12 +168,14 @@ function lose(source){
 //what to run at end of game
 function endGame(){
         clearInterval(tempTimer);
-        $('#timer').html('');
-        $('#questions').html('Game Over! Here\'s how you did!');
-        $('#answerOne').html('Correct Answers: ' + wins );
-        $('#answerTwo').html('Wrong Answers: ' + losses);
-        $('#answerThree').html('');
-        $('#answerFour').html('');
+        $('#timer').hide();
+        $('#questions').html('Game Over! Here\'s how you did!').show();
+        $('#answerOne').hide();
+        $('#answerTwo').hide();
+        $('#answerThree').hide();
+        $('#answerFour').hide();
+        $('#trivia').html('Correct Answers: ' + wins ).show();
+        $('#triviaImage').html('Wrong Answers: ' + losses).show();
         $('.reset').html('Start Over?');
 }
 

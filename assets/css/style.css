@@ -12,6 +12,9 @@ body{
     height: 90vh;
     color: White;
 }
+.container div{
+    margin: 0 10 0 10;
+}
 .title{
     font-size: 36px;
     color: white;
