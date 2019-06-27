@@ -35,4 +35,24 @@ body{
 img{
     height: 350px;
 }
- 
+@media only screen and (max-width: 600px) {
+    body{
+        background-size: auto;
+        
+    }
+    .title{
+        font-size: 16px;
+    }
+    #start{
+        font-size: 16px;
+        width: 50px;
+        margin-top: 50px;
+    }
+    .container{
+        width: 50%;
+        min-width: 200px;
+    }
+    img{
+        height: 100px;
+    }
+  }
