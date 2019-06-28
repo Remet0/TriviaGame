@@ -176,14 +176,21 @@ function endGame(){
         $('#answerFour').hide();
         $('#trivia').html('Correct Answers: ' + wins ).show();
         $('#triviaImage').html('Wrong Answers: ' + losses).show();
-        $('.reset').html('Start Over?');
+        $('.reset').html('Start Over?').show();
 }
 
 
 
 
 $('.reset').on('click', function(){
-    document.location.reload();
+    timer = 20;
+    count = 0;
+    wins = 0;
+    losses = 0;
+    $('.reset').hide();
+    displayQuestion();
+    nextQuestion();
+
 })
 
 
