@@ -21,6 +21,9 @@ body{
     text-shadow: -1px 0 darkred, 0 1px darkred, 1px 0 darkred, 0 -1px darkred;
     font-family: fantasy;
 }
+.pointer{
+    cursor: pointer;
+}
 #start{
     background-color: lightcoral;
     border: 2px solid darkred;
